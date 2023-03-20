@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>better_new_game_plus_06</RootNamespace>
+    <RootNamespace>better_new_game_plus_magatama_only_06</RootNamespace>
+    <AssemblyName>better_new_game_plus_magatama_only_06</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
