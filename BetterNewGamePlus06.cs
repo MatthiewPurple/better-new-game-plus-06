@@ -42,19 +42,41 @@ public class BetterNewGamePlus06 : MelonMod
     {
         public static void Postfix()
         {
-            dds3GlobalWork.DDS3_GBWK.unitwork = partyList; // Demi-fiend and his demons in party and stock
             dds3GlobalWork.DDS3_GBWK.maxstock = 12; // Maximum number of slots in stock
-            dds3GlobalWork.DDS3_GBWK.stockcnt = stockCount; // Number of demons in stock
-            dds3GlobalWork.DDS3_GBWK.stocklist = stockList; // Demons in stock
+            dds3GlobalWork.DDS3_GBWK.item[12] = itemList[12]; // Chakra Elixir
+            dds3GlobalWork.DDS3_GBWK.item[44] = itemList[44]; // Blessed Fan
+            dds3GlobalWork.DDS3_GBWK.item[45] = itemList[45]; // Soul Return
+            dds3GlobalWork.DDS3_GBWK.item[46] = itemList[46]; // Spyglass
+            dds3GlobalWork.DDS3_GBWK.item[60] = itemList[60]; // Cursed Gospel (mod)
+        }
+    }
 
-            dds3GlobalWork.DDS3_GBWK.item = itemList; // Items
-
-            dds3GlobalWork.DDS3_GBWK.maka = macca; // Macca
-
-            foreach (byte item in magatamaList) // Collected Magatama
+    [HarmonyPatch(typeof(EventBit), nameof(EventBit.evtBitOn))]
+    private class Patch4
+    {
+        public static void Postfix(ref int no)
+        {
+            // If the leather jacket was selected
+            if (no == 2224)
             {
-                datCalc.datAddHearts(item);
+                dds3GlobalWork.DDS3_GBWK.unitwork = partyList; // Demi-fiend and his demons in party and stock
+                dds3GlobalWork.DDS3_GBWK.maxstock = 12; // Maximum number of slots in stock
+                dds3GlobalWork.DDS3_GBWK.stockcnt = stockCount; // Number of demons in stock
+                dds3GlobalWork.DDS3_GBWK.stocklist = stockList; // Demons in stock
+
+                dds3GlobalWork.DDS3_GBWK.item = itemList; // Items
+
+                dds3GlobalWork.DDS3_GBWK.maka = macca; // Macca
+
+                foreach (byte item in magatamaList) // Collected Magatama
+                {
+                    datCalc.datAddHearts(item);
+                }
+
+                dds3GlobalWork.DDS3_GBWK.unitwork[0].param[2] -= 2; // Removes the 2 bonus magic points from the leather jacket
+                dds3GlobalWork.DDS3_GBWK.unitwork[0].param[4] -= 1; // Removes the 1 bonus agility points from the leather jacket
             }
         }
     }
+
 }

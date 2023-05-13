@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>better_new_game_plus_everything_06</RootNamespace>
-    <AssemblyName>better_new_game_plus_everything_06</AssemblyName>
+    <RootNamespace>better_new_game_plus_modern_06</RootNamespace>
+    <AssemblyName>better_new_game_plus_modern_06</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
